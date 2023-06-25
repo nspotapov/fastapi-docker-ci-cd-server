@@ -4,11 +4,8 @@ import json
 from typing import Dict, Any, List, Tuple
 
 from fastapi import FastAPI, Request, Response
-try:
-    from loguru import logger as log
-except ImportError:
-    from logging import log
-    log = lambda msg: log(logging.INFO, msg)
+
+from loguru import logger as log
 import dotenv
 import docker.models.containers
 
@@ -20,6 +17,7 @@ DEPLOY_TOKEN = os.getenv("DEPLOY_TOKEN")
 if DEPLOY_TOKEN is None:
     log.error("DEPLOY_TOKEN isn`t set! Server stopped.")
     exit(-1)
+log.info(f"DEPLOY_TOKEN: {DEPLOY_TOKEN}")
 
 
 def is_authenticated(request: Request):

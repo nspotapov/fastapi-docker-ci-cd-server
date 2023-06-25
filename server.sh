@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-uvicorn main:app
+uvicorn main:app --host $DEPLOY_HOST --port $DEPLOY_PORT
