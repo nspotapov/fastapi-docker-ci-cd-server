@@ -1,9 +1,14 @@
+import logging
 import os
 import json
 from typing import Dict, Any, List, Tuple
 
 from fastapi import FastAPI, Request, Response
-from loguru import logger as log
+try:
+    from loguru import logger as log
+except ImportError:
+    from logging import log
+    log = lambda msg: log(logging.INFO, msg)
 import dotenv
 import docker.models.containers
 
