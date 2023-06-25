@@ -8,7 +8,7 @@ Type=simple
 Restart=always
 RestartSec=3
 Type=forking
-ExecStart=/bin/bash server.sh start
+ExecStart=/bin/bash server.sh
 
 [Install]
 WantedBy=multi-user.target
