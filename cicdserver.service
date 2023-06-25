@@ -3,7 +3,7 @@ Description=Custom docker CI/CD Server
 After=network-online.target
 
 [Service]
-WorkingDirectory=/root/cicdserver
+WorkingDirectory=/root/fastapi-docker-ci-cd-server
 Type=simple
 Restart=always
 RestartSec=3
