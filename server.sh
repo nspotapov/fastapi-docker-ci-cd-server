@@ -14,10 +14,9 @@ source activate
 cd ..
 cd ..
 
-pip3 install -r requirements.txt
+grep -v '^#' requirements.txt | xargs -n 1 pip3 install
 
 # shellcheck disable=SC2046
 export $(grep -v '^#' .env | xargs -d '\n')
 
-# uvicorn main:app --host $DEPLOY_HOST --port $DEPLOY_PORT
 gunicorn main:app --workers 1 --worker-class uvicorn.workers.UvicornWorker --bind ${DEPLOY_HOST}:${DEPLOY_PORT}
