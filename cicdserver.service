@@ -1,0 +1,14 @@
+[Unit]
+Description=Custom docker CI/CD Server
+After=network-online.target
+
+[Service]
+WorkingDirectory=/root/cicdserver
+Type=simple
+Restart=always
+RestartSec=3
+Type=forking
+ExecStart=/bin/bash server.sh start
+
+[Install]
+WantedBy=multi-user.target
